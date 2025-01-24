@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarea 1 - Acerca de Candy 1665</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #principal {
+            width: 95%;
+            height: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            background-color: #D4AF37;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #C49F32;
+        }
+
+        .letter-container {
+            position: relative;
+            width: 800px;
+            height: 250px;
+            margin: 50px auto 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Efecto LED */
+        .led {
+            animation: ledEffect 1.5s infinite alternate;
+        }
+
+        @keyframes ledEffect {
+            0% { background-color: #4649db; box-shadow: 0 0 10px #4649db; }
+            50% { background-color: #6a6dfb; box-shadow: 0 0 20px #6a6dfb; }
+            100% { background-color: #4649db; box-shadow: 0 0 10px #4649db; }
+        }
+
+        /* Letra C */
+        #c1, #c2, #c3 {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #c1 {
+            width: 30px;
+            height: 200px;
+            left: -120px;
+            top: 20px;
+        }
+        #c2 {
+            width: 100px;
+            height: 30px;
+            left: -120px;
+            top: 20px;
+        }
+        #c3 {
+            width: 100px;
+            height: 30px;
+            left: -120px;
+            top: 200px;
+        }
+
+        /* Letra A */
+        #a1, #a2, #a3, #a4 {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #a1 {
+            width: 30px;
+            height: 200px;
+            left: -5px;
+            top: 20px;
+        }
+        #a2 {
+            width: 30px;
+            height: 200px;
+            left: 55px;
+            top: 20px;
+        }
+        #a3 {
+            width: 80px;
+            height: 30px;
+            left: -5px;
+            top: 20px;
+        }
+        #a4 {
+            width: 80px;
+            height: 30px;
+            left: -5px;
+            top: 110px;
+        }
+
+        /* Letra N */
+        #n1, #n2, #line {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #n1 {
+            width: 30px;
+            height: 200px;
+            left: 100px;
+            top: 20px;
+        }
+        #n2 {
+            width: 30px;
+            height: 200px;
+            left: 180px;
+            top: 20px;
+        }
+        #line {
+            width: 30px;
+            height: 200px;
+            left: 140px;
+            top: 20px;
+            transform: rotate(-25deg);
+        }
+
+        /* Letra D */
+        #d1, #d2, #d3, #d4 {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #d1 {
+            width: 30px;
+            height: 200px;
+            left: 220px;
+            top: 20px;
+        }
+        #d2 {
+            width: 100px;
+            height: 30px;
+            left: 240px;
+            top: 20px;
+        }
+        #d3 {
+            width: 30px;
+            height: 140px;
+            left: 310px;
+            top: 50px;
+        }
+        #d4 {
+            width: 100px;
+            height: 30px;
+            left: 240px;
+            top: 190px;
+        }
+
+        /* Letra Y */
+        #y1, #y2, #y3 {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #y1 {
+            width: 30px;
+            height: 100px;
+            left: 400px;
+            top: 120px;
+        }
+        #y2 {
+            width: 30px;
+            height: 120px;
+            left: 400px;
+            top: 20px;
+            transform: rotate(-30deg);
+            transform-origin: bottom left;
+        }
+        #y3 {
+            width: 30px;
+            height: 120px;
+            left: 400px;
+            top: 20px;
+            transform: rotate(30deg);
+            transform-origin: bottom right;
+        }
+
+        /* Letra M */
+        #m1, #m2, #m3, #m4 {
+            position: absolute;
+            background-color: #4649db;
+        }
+        #m1 {
+            width: 30px;
+            height: 200px;
+            left: 520px;
+            top: 20px;
+        }
+        #m2 {
+            width: 30px;
+            height: 200px;
+            left: 640px;
+            top: 20px;
+        }
+        #m3 {
+            width: 30px;
+            height: 120px;
+            left: 580px;
+            top: 20px;
+            transform: rotate(-30deg);
+            transform-origin: bottom left;
+        }
+        #m4 {
+            width: 30px;
+            height: 120px;
+            left: 580px;
+            top: 20px;
+            transform: rotate(30deg);
+            transform-origin: bottom left;
+        }
+
+        /* Letra E */
+#e1, #e2, #e3 {
+    position: absolute;
+    background-color: #4649db;
+}
+#e1 {
+    width: 30px;
+    height: 200px;
+    left: 680px;
+    top: 20px;
+}
+#e2 {
+    width: 80px;
+    height: 30px;
+    left: 680px;
+    top: 20px;
+}
+#e3 {
+    width: 80px;
+    height: 30px;
+    left: 680px;
+    top: 110px;
+}
+#e4 {
+    position: absolute;
+    background-color: #4649db;
+    width: 80px;
+    height: 30px;
+    left: 680px;
+    top: 190px;  
+}
+
+
+/* Letra J */
+#j1, #j2 #j3 {
+    position: absolute;
+    background-color: #4649db;
+}
+#j1 {
+    width: 30px;
+    height: 200px;
+    left: 830px;
+    top: 20px;
+}
+#j2 {
+    width: 30px;
+    height: 120px;
+    left: 900px;
+    top: 20px;
+    transform: rotate(45deg);
+    transform-origin: bottom left;
+}
+#j3{
+    position: absolute;
+    background-color: #4649db;
+    width: 80px;
+    height: 30px;
+    left: 780px;
+    top: 190px;  
+}
+
+/* Letra I */
+#i1 {
+    position: absolute;
+    background-color: #4649db;
+}
+#i1 {
+    width: 30px;
+    height: 200px;
+    left: 870px;
+    top: 20px;
+}
+/* Letra a */
+#A1,A2,A3,A4 {
+    position: absolute;
+    background-color: #4649db;
+}
+#A1 {
+    width: 30px;
+    height: 200px;
+    left: 920px;
+    top: 20px;
+}
+/* Letra I */
+#A2 {
+    position: absolute;
+    background-color: #4649db;
+}
+#A2 {
+    width: 30px;
+    height: 200px;
+    left: 990px;
+    top: 20px;
+}
+/* Letra I */
+#A3 {
+    position: absolute;
+    background-color: #4649db;
+}
+#A3 {
+    width: 80px;
+            height: 30px;
+            left: 940px;
+            top: 110px;
+}
+/* Letra I */
+#A4 {
+    position: absolute;
+    background-color: #4649db;
+}
+#A4 {
+    width: 80px;
+            height: 30px;
+            left: 940px;
+            top: 20px;
+}
+
+/* Letra I */
+#nu1 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu1 {
+    width: 30px;
+    height: 150px;
+    left: -5px;
+    transform: rotate(90deg);
+    top: 430px;
+}
+/* Letra I */
+#nu2 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu2 {
+    width: 30px;
+    height: 115px;
+    left: 55px;
+    top: 380px;
+}
+#nu3 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu3 {
+    width: 30px;
+            height: 150px;
+            left: -5px;
+            transform: rotate(90deg);
+            top: 300px;
+}
+/* Letra I */
+#nu4 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu4 {
+    width: 30px;
+    height: 115px;
+    left: -65px;
+    top: 500px;}
+
+
+#nu5 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu5 {
+    width: 30px;
+            height: 150px;
+            left: -5px;
+            transform: rotate(90deg);
+            top: 550px;
+}
+
+#nu6 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu6 {
+    width: 30px;
+            height: 90px;
+            left: 130px;
+            transform: rotate(90deg);
+            top: 580px;
+}
+#nu7 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu7 {
+    width: 30px;
+            height: 90px;
+            left: 130px;
+            transform: rotate(90deg);
+            top: 325px;
+}
+
+#nu8 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu8 {
+    width: 30px;
+            height: 250px;
+            left: 160px;
+            top: 385px;
+}
+#nu9 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu9 {
+    width: 30px;
+            height: 250px;
+            left: 100px;
+            top: 385px;
+}
+#nu10 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu10 {
+    width: 30px;
+    height: 150px;
+    left: 265px;
+    transform: rotate(90deg);
+    top: 430px;
+}
+/* Letra I */
+#nu11 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu11 {
+    width: 30px;
+    height: 115px;
+    left: 325px;
+    top: 380px;
+}
+#nu12 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu12 {
+    width: 30px;
+            height: 150px;
+            left: 265px;
+            transform: rotate(90deg);
+            top: 550px;
+}
+/* Letra I */
+#nu13 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu13 {
+    width: 30px;
+    height: 120px;
+    left: 205px;
+    top: 500px;}
+    
+    #nu14 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu14 {
+    width: 30px;
+    height: 150px;
+    left: 265px;
+    transform: rotate(90deg);
+    top: 305px;}
+
+    #nu15 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu15 {
+    width: 30px;
+    height: 100px;
+    left:   405px;
+    transform: rotate(90deg);
+    top: 330px;}
+
+    #nu16 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu16 {
+    width: 30px;
+    height: 100px;
+    left:   405px;
+    transform: rotate(90deg);
+    top: 455px;}
+    
+    #nu16 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu17 {
+    width: 30px;
+    height: 100px;
+    left:   405px;
+    transform: rotate(90deg);
+    top: 575px;}
+
+    #nu17 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu18 {
+    width: 30px;
+    height: 275px;
+    left:   450px;
+    top: 365px;}
+
+    #nu18 {
+    position: absolute;
+    background-color: #4649db;
+}
+    
+
+#nu19 {
+    width: 30px;
+    height: 70px;
+    left:  530px;
+    transform: rotate(90deg);
+    top:  465px;}
+
+    #nu19 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu20 {
+    width: 30px;
+    height: 285px;
+    left:  590px;
+    top:  360px;}
+
+    #nu20 {
+    position: absolute;
+    background-color: #4649db;
+}
+#nu21 {
+    width: 20px;
+    height: 285px;
+    left:  600px;
+    top:  360px;}
+
+    #nu21 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu22 {
+    width: 30px;
+    height: 285px;
+    left:  660px;
+    top:  360px;}
+
+    #nu22{
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu23 {
+    width: 30px;
+    height: 130px;
+    left:  710px;
+    transform: rotate(90deg);
+    top:  450px;}
+
+    #nu23{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu24 {
+    width: 30px;
+    height: 130px;
+    left:  710px;
+    transform: rotate(90deg);
+    top:  570px;}
+
+    #nu24{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu25 {
+    width: 30px;
+    height: 130px;
+    left:  760px;
+    top:  520px;}
+
+    #nu25{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu26 {
+    width: 20px;
+    height: 285px;
+    left:  810px;
+    top:  360px;}
+
+    #nu26 {
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu27 {
+    width: 30px;
+    height: 130px;
+    left:  900px;
+    top:  515px;}
+
+    #nu27{
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu28 {
+    width: 30px;
+    height: 110px;
+    left:  860px;
+    transform: rotate(90deg);
+    top:  460px;}
+
+    #nu28{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu29 {
+    width: 30px;
+    height: 110px;
+    left:  860px;
+    transform: rotate(90deg);
+    top:  575px;}
+
+    #nu29{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu30 {
+    width: 30px;
+    height: 70px;
+    left:  960px;
+    transform: rotate(90deg);
+    top:  600px;}
+
+    #nu30{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu31 {
+    width: 30px;
+    height: 70px;
+    left:  960px;
+    transform: rotate(90deg);
+    top:  350px;}
+
+    #nu31{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu32 {
+    width: 30px;
+    height: 70px;
+    left:  960px;
+    transform: rotate(90deg);
+    top: 480px;}
+
+    #nu32{
+    position: absolute;
+    background-color: #4649db;
+}
+#nu33 {
+    width: 30px;
+    height: 120px;
+    left:  980px;
+    top: 500px;}
+
+    #nu33{
+    position: absolute;
+    background-color: #4649db;
+}
+
+#nu34 {
+    width: 30px;
+    height: 110px;
+    left:  940px;
+    top: 400px;}
+
+    #nu34{
+    position: absolute;
+    background-color: #4649db;
+}
+
+    </style>
+</head>
+
+<body>
+    <div id="principal">
+        <h2>Tarea 1 - Representación Gráfica con CSS</h2>
+        <p>20231665</p>
+
+        <div class="letter-container"> 
+            <div id="c1" class="led"></div>
+            <div id="c2" class="led"></div>
+            <div id="c3" class="led"></div>
+            <div id="a1" class="led"></div>
+            <div id="a2" class="led"></div>
+            <div id="a3" class="led"></div>
+            <div id="a4" class="led"></div>
+            <div id="n1" class="led"></div>
+            <div id="n2" class="led"></div>
+            <div id="line"class="led"></div>
+            <div id="d1" class="led"></div>
+            <div id="d2" class="led"></div>
+            <div id="d3" class="led"></div>
+            <div id="d4" class="led"></div>
+            <div id="y1" class="led"></div>
+            <div id="y2" class="led"></div>
+            <div id="y3" class="led"></div>
+            <div id="m1" class="led"></div>
+            <div id="m2" class="led"></div>
+            <div id="m3" class="led"></div>
+            <div id="m4" class="led"></div>
+            <!-- Letra E -->
+<div id="e1" class="led"></div>
+<div id="e2" class="led"></div>
+<div id="e3" class="led"></div>
+<div id="e4" class="led"></div>
+<div id="j1" class="led"></div>
+<div id="j23" class="led"></div>
+<div id="j3" class="led"></div>
+<div id="i1" class="led"></div>
+<div id="A1" class="led"></div>
+<div id="A2" class="led"></div>
+
+<div id="A3" class="led"></div>
+<div id="A1" class="led"></div>
+<div id="A4" class="led"></div>
+
+<div id="nu1" class="led"></div>
+<div id="nu2" class="led"></div>
+<div id="nu3" class="led"></div>
+<div id="nu4" class="led"></div>
+<div id="nu5" class="led"></div>
+<div id="nu6" class="led"></div>
+<div id="nu7" class="led"></div>
+<div id="nu8" class="led"></div>
+<div id="nu9" class="led"></div>
+<div id="nu10" class="led"></div>
+<div id="nu11" class="led"></div>
+<div id="nu12" class="led"></div>
+<div id="nu13" class="led"></div>
+<div id="nu14" class="led"></div>
+<div id="nu15" class="led"></div>
+<div id="nu16" class="led"></div>
+<div id="nu17" class="led"></div>
+<div id="nu18" class="led"></div>
+<div id="nu19" class="led"></div>
+<div id="nu20" class="led"></div>
+<div id="nu21" class="led"></div>
+<div id="nu22" class="led"></div>
+<div id="nu23" class="led"></div>
+<div id="nu24" class="led"></div>
+<div id="nu25" class="led"></div>
+<div id="nu26" class="led"></div>
+<div id="nu27" class="led"></div>
+<div id="nu28" class="led"></div>
+<div id="nu29" class="led"></div>
+<div id="nu30" class="led"></div>
+<div id="nu31" class="led"></div>
+<div id="nu32" class="led"></div>
+<div id="nu33" class="led"></div>
+<div id="nu34" class="led"></div>
+
+
+
+        </div>
+
+        <div class="buttons">
+            <button onclick="window.location.href='p1.html'">Ir a Forma 1</button>
+            <button onclick="window.location.href='acerca_de.html'">Acerca De</button>
+            <button onclick="window.location.href='index.html'">Volver a Inicio</button>
+        </div>
+    </div>
+</body>
+</html>
